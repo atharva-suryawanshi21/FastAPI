@@ -2,8 +2,9 @@ Topics covered
 1) Pydantic schema
 2) SQL Alchemy datbase connection
 3) Models and table
-4) Exceptions and status codes
+4) Handling exceptions and status codes
 5) delete and update
+6) Response model
 
 Python files
 1. schema - defines the pydantic schema to be received as a response(JSON data)
