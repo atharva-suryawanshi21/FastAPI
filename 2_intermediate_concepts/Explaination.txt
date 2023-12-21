@@ -11,4 +11,6 @@ Python files
 3. model_schema - defines model structure in database
 4. database_connection - connecting database (create engine, session)
 
-	In main, session initialized in 'database_connection' is used, with model defined in 'model_schema'. with POST request, data is recieved according to 'schema' structure.
+	In main, session initialized in 'database_connection' is used, 
+with model defined in 'model_schema'. with POST request, 
+data is recieved according to 'schema' structure.
