@@ -1,0 +1,14 @@
+Topics covered
+1) Pydantic schema
+2) SQL Alchemy datbase connection
+3) Models and table
+4) Exceptions and status codes
+5) delete and update
+
+Python files
+1. schema - defines the pydantic schema to be received as a response(JSON data)
+2. main - the main file where database activities occur
+3. model_schema - defines model structure in database
+4. database_connection - connecting database (create engine, session)
+
+	In main, session initialized in 'database_connection' is used, with model defined in 'model_schema'. with POST request, data is recieved according to 'schema' structure.
