@@ -27,7 +27,7 @@ def get_db():
 # unlike regular functions that return a value and exit
 
 
-@app.post('/blog', status_code=status.HTTP_201_CREATED)
+@app.post('/blog', status_code=status.HTTP_201_CREATED, tags=['blog'])
 def create(request: schema.blog_info, db: Session = Depends(get_db)):
     # new instance of Blog model
     new_blog = model_schema.Blog(title=request.title, body=request.body)
@@ -55,7 +55,7 @@ def create(request: schema.blog_info, db: Session = Depends(get_db)):
 # note: 201 for resource creations not for updating existing resources
 
 
-@app.get('/blog')
+@app.get('/blog', tags=['blog'])
 # to get all the blogs
 def get_all_blogs(db: Session = Depends(get_db)):
     all_blogs = db.query(model_schema.Blog).all()
@@ -63,7 +63,7 @@ def get_all_blogs(db: Session = Depends(get_db)):
 # query() - used to construct a database query to retrive data from database
 
 
-@app.get('/blog/{id}')
+@app.get('/blog/{id}', tags=['blog'])
 # to get specific blog
 # also handle situation where the requested id is absent
 def get_specific(id: int, db: Session = Depends(get_db)):
@@ -80,7 +80,7 @@ def get_specific(id: int, db: Session = Depends(get_db)):
     return blog
 
 
-@app.delete('/blog/{id}', status_code=status.HTTP_204_NO_CONTENT)
+@app.delete('/blog/{id}', status_code=status.HTTP_204_NO_CONTENT, tags=['blog'])
 # to delete a blog
 def delete(id, db: Session = Depends(get_db)):
     blog = db.query(model_schema.Blog).filter(
@@ -96,7 +96,7 @@ def delete(id, db: Session = Depends(get_db)):
 #                            , they won't be automatically removed or updated
 
 
-@app.put('/blog/{id}', status_code=status.HTTP_202_ACCEPTED)
+@app.put('/blog/{id}', status_code=status.HTTP_202_ACCEPTED, tags=['blog'])
 # to update a blog
 def update(id, request: schema.blog_info, db: Session = Depends(get_db)):
     blog = db.query(model_schema.Blog).filter(
@@ -115,7 +115,7 @@ def update(id, request: schema.blog_info, db: Session = Depends(get_db)):
 # using this new model, we input it to decorator
 
 
-@app.get('/blog_title/{id}', response_model=schema.blog_title)
+@app.get('/blog_title/{id}', response_model=schema.blog_title, tags=['blog_title'])
 # to get one blog title
 def get_title(id: int, db: Session = Depends(get_db)):
     blog = db.query(model_schema.Blog).filter(
@@ -127,7 +127,7 @@ def get_title(id: int, db: Session = Depends(get_db)):
 # we only get title of blog as the class blog_title has only title attribute
 
 
-@app.get('/blog_title', response_model=List[schema.blog_title])
+@app.get('/blog_title', response_model=List[schema.blog_title], tags=['blog_title'])
 # to get titles of all blogs
 def get_all_titles(db: Session = Depends(get_db)):
     blog = db.query(model_schema.Blog).all()
