@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 '''
 to run:
-uvicorn 1_path_parameters:app --relaod
+uvicorn 1_path_parameters:app --reload
 '''
 # make instance of FastAPI
 app = FastAPI()
